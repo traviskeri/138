@@ -33,7 +33,7 @@ if recv2[:3] != '250':
 
 # Send RCPT TO command and print server response.
 print("Sending RCPT TO Command")
-clientSocket.send(b"RCPT TO: travis.j.keri@gmail.com\r\n")
+clientSocket.send(b"RCPT TO: <travis.j.keri@gmail.com>\r\n")
 recv2 = clientSocket.recv(1024)
 print(recv2)
 if recv2[:3] != '250':
@@ -51,7 +51,7 @@ if recv2[:3] != '250':
 
 #Send message data.
 print("Sending msg Command")
-clientSocket.send(msg)
+clientSocket.send(msg + endmsg)
 recv2 = clientSocket.recv(1024)
 print(recv2)
 if recv2[:3] != '250':
@@ -59,12 +59,12 @@ if recv2[:3] != '250':
 
 
 #Message ends with a single period.
-print("Sending endmsg Command")
-clientSocket.send(endmsg)
-recv2 = clientSocket.recv(1024)
-print(recv2)
-if recv2[:3] != '250':
-	print('250 reply not received from sever.')
+#print("Sending endmsg Command")
+#clientSocket.send(endmsg)
+#recv2 = clientSocket.recv(1024)
+#print(recv2)
+#if recv2[:3] != '250':
+#	print('250 reply not received from sever.')
 
 
 # Send QUIT command and get server response.
