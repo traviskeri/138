@@ -3,7 +3,7 @@
 
 from socket import*
 
-msg = b"\r\n I love computer networks!"
+msg = b"\r\n I love computer networks!\r\n"
 endmsg = b"r\r\n.\r\n"
 
 mailserver = 'smtp.csus.edu'
