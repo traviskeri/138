@@ -4,7 +4,7 @@
 from socket import*
 
 msg = b"\r\n I love computer networks!"
-endmsg = b"r\r\n. \r\n"
+endmsg = b"r\r\n.\r\n"
 
 mailserver = 'smtp.csus.edu'
 mailport = 25
@@ -45,13 +45,13 @@ print("Sending DATA Command")
 clientSocket.send(b"DATA\r\n")
 recv2 = clientSocket.recv(1024)
 print(recv2)
-if recv2[:3] != '250':
+if recv2[:3] != '354':
 	print('250 reply not received from sever.')
 
 
 #Send message data.
 print("Sending msg Command")
-clientSocket.send(msg + endmsg)
+clientSocket.send(msg)
 recv2 = clientSocket.recv(1024)
 print(recv2)
 if recv2[:3] != '250':
@@ -59,12 +59,12 @@ if recv2[:3] != '250':
 
 
 #Message ends with a single period.
-#print("Sending endmsg Command")
-#clientSocket.send(endmsg)
-#recv2 = clientSocket.recv(1024)
-#print(recv2)
-#if recv2[:3] != '250':
-#	print('250 reply not received from sever.')
+print("Sending endmsg Command")
+clientSocket.send(endmsg)
+recv2 = clientSocket.recv(1024)
+print(recv2)
+if recv2[:3] != '250':
+	print('250 reply not received from sever.')
 
 
 # Send QUIT command and get server response.
