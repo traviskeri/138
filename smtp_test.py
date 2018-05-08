@@ -51,7 +51,7 @@ if recv2[:3] != '354':
 
 #Send message data.
 print("Sending msg Command")
-clientSocket.send("\r\n SMTP Mail Client Test\nI love computer networkin!\r\n.\r\n")
+clientSocket.send("\r\n SMTP Mail Client Test\nI love computer networking!\r\n.\r\n")
 recv2 = clientSocket.recv(1024)
 print(recv2)
 if recv2[:3] != '250':
@@ -72,8 +72,8 @@ print("Sending QUIT")
 clientSocket.send(b"QUIT\r\n")
 recv2 = clientSocket.recv(1024)
 print(recv2)
-if recv2[:3] != '250':
-	print('250 reply not received from sever.')
+if recv2[:3] != '221':
+	print('221 reply not received from sever.')
 
 
 print("Mail Sent")
